@@ -1,0 +1,11 @@
+ISB Plan
+
+Overhead
+
+Select song
+
+Capo
+
+Song = readFile(selected)
+
+Print Song
