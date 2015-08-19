@@ -156,7 +156,6 @@ function transpose($chord, $tKey, $key)
     //      );
 
 
-    // $stripped = preg_replace('/(.*)([ABCDEFG][#b]?)(.*)/', "$2", $chord);
     $stripped = preg_replace('/(.*)([ABCDEFG][#b]?)(.*)/', '$2', $chord);
 
     for ($i = 1; $i < count($scales[$key]); $i = ($i + 1) % count($scales[$key])) {
