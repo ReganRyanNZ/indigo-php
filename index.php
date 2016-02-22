@@ -1,6 +1,7 @@
 <html>
 	<?php 
     require_once 'parsingFunctions.php';
+    $songs_folder = 'songs_master/';
     ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type "text/css" href="style.css">
@@ -16,8 +17,8 @@
 <?php
     echo '<option value="Select A Song">Select A Song</option>';
     $files = array();
-    foreach (glob('songs/*.song') as $file) {
-        $name = preg_replace('/songs\/(.*)\.song/', '$1', $file);
+    foreach (glob($songs_folder.'*.song') as $file) {
+        $name = preg_replace('/songs_master\/(.*)\.song/', '$1', $file);
         $selected = '';
         if (isset($_GET['choose_song']) && currentSong() == $name) {
             $selected = 'selected';
@@ -41,7 +42,7 @@
 <!-- Print selected song -->
 <?php
 if (isset($_GET['choose_song'])) {
-    $getFile = 'songs/'.currentSong().'.song';
+    $getFile = $songs_folder.currentSong().'.song';
     $transposeValue = isset($_GET['transposeValue']) ? $_GET['transposeValue'] : 0;
     printSong(file_get_contents($getFile), $showChords, $transposeValue);
     //console.log(getTextWidth("hello there!", "bold 12pt arial"));  // close to 86

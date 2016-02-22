@@ -65,9 +65,6 @@ function printSong($raw, $showChords, $transposeValue)
         } elseif (preg_match('/{end_of_chorus}/', $raw[$i])) {
             $isChorus = false;
             echo '</div>';
-        // } elseif (preg_match('/^[ \t]*$/', $raw[$i]) && !$isChorus) {
-        //         ++$stanzaNumber;
-        //         echo "<br><span class='stanzaNumber'>$stanzaNumber </span>";
         } else {
             $lyrics = array();
             $chords = array();
@@ -130,31 +127,6 @@ function transpose($chord, $tKey, $key)
     if ($tKey == 'Z') {
         return $chord;
     }
-    // $scales = array
-    //      (
-    //          'A' => array('A','B','C#','D','E','F#','G#'),
-    //          'A#' => array('A#','B#','D','D#','E#','G','A'),
-    //          'Bb' => array('Bb','C','D','Eb','F','G','A'),
-    //          'B' => array('B','C#','D#','E','F#','G#','A#'),
-    //          'Cb' => array('Cb','Db','Eb','Fb','Gb','Ab','Bb'),
-    //          'B#' => array('B#','D','E','E#','G','A','B'),
-    //          'C' => array('C','D','E','F','G','A','B'),
-    //          'C#' => array('C#','D#','E#','F#','G#','A#','B#'),
-    //          'Db' => array('Db','Eb','F','Gb','Ab','Bb','C'),
-    //          'D' => array('D','E','F#','G','A','B','C#'),
-    //          'D#' => array('D#','E#','G','G#','A#','C','D'),
-    //          'Eb' => array('Eb','F','G','Ab','Bb','C','D'),
-    //          'E' => array('E','F#','G#','A','B','C#','D#'),
-    //          'E#' => array('E#','G','A','A#','B#','D','E'),
-    //          'Fb' => array('Fb','Gb','Ab','A','Cb','Db','Eb'),
-    //          'F' => array('F','G','A','Bb','C','D','E'),
-    //          'F#' => array('F#','G#','A#','B','C#','D#','E#'),
-    //          'Gb' => array('Gb','Ab','Bb','Cb','Db','Eb','F'),
-    //          'G' => array('G','A','B','C','D','E','F#'),
-    //          'G#' => array('G#','A#','B#','C#','D#','E#','G'),
-    //          'Ab' => array('Ab','Bb','C','Db','Eb','F','G'),
-    //      );
-
 
     $stripped = preg_replace('/(.*)([ABCDEFG][#b]?)(.*)/', '$2', $chord);
 
@@ -171,21 +143,4 @@ function transpose($chord, $tKey, $key)
         }
     }
 }
-//JS Function to get text width.
-// /**
-//  * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
-//  * 
-//  * @param {String} text The text to be rendered.
-//  * @param {String} font The css font descriptor that text is to be rendered with (e.g. "bold 14px verdana").
-//  * 
-//  * @see http://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
-//  */
-// function getTextWidth(text, font) {
-//     // re-use canvas object for better performance
-//     var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
-//     var context = canvas.getContext("2d");
-//     context.font = font;
-//     var metrics = context.measureText(text);
-//     return metrics.width;
-// };
 ?>
