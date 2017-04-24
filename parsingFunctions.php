@@ -5,14 +5,14 @@ $scales = array(
     'Bb' => array('Bb','C','D','Eb','F','G','A'),
     'B' => array('B','C#','D#','E','F#','G#','A#'),
     'C' => array('C','D','E','F','G','A','B'),
-    'C#' => array('C#','D#','E#','F#','G#','A#','B#'),
+    'Db' => array('Db','Eb','F','Gb','Ab','Bb','C'),
     'D' => array('D','E','F#','G','A','B','C#'),
-    'D#' => array('D#','E#','G','G#','A#','C','D'),
+    'Eb' => array('Eb','F','G','Ab','Bb','C','D'),
     'E' => array('E','F#','G#','A','B','C#','D#'),
     'F' => array('F','G','A','Bb','C','D','E'),
-    'F#' => array('F#','G#','A#','B','C#','D#','E#'),
+    'Gb' => array('Gb','Ab','Bb','Cb','Db','Eb','F'),
     'G' => array('G','A','B','C','D','E','F#'),
-    'G#' => array('G#','A#','B#','C#','D#','E#','G'),
+    'Ab' => array('Ab','Bb','C','Db','Eb','F','G'),
     );
 
 function currentSong()
@@ -92,10 +92,11 @@ function printSong($raw, $showChords, $transposeValue)
             }
 
             if ($showChords && count($chords) > 0) { //print chords
-                echo "<span style='color: white'>";
+                // echo "<span class='invisible-padding-words'>";
+                echo '<span data-text="';
                 for ($n = 0;$n <= count($lyrics);++$n) {
                     if (isset($chords[$n])) {
-                        echo "<span class='chord'>".transpose(implode('', $chords[$n]), $tKey, $key).'</span>';
+                        echo "\"></span><span class='chord'>".transpose(implode('', $chords[$n]), $tKey, $key)."</span><span <span data-text=\"";
                         $l = 0;
                         //skip over chord length, to keep subsequent chords in place.
                         while ($n < count($lyrics) &&
@@ -112,7 +113,7 @@ function printSong($raw, $showChords, $transposeValue)
                     }
                 }
             }
-            echo '</span>';
+            echo '"></span>';
             echo '<br>';
         }
 

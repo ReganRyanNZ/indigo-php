@@ -1,4 +1,4 @@
-<html>
+  <html>
 	<?php 
     require_once 'parsingFunctions.php';
     $songs_folder = 'songs_master/';
